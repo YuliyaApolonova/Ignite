@@ -7,10 +7,13 @@ delete user.name;
 
 function IsEmpty(obj)
 {
-	for(var key in obj){ return false;}
+	for(var key in obj){ 
+		return false;
+	}
 		return true;
 		
 }
+
 var res;
 res=IsEmpty(user);
 alert (res);
