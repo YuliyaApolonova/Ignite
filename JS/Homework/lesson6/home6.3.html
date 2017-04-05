@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home6.3</title>
+</head>
+<body>
+<div >
+	<li class="li2">
+	   <ul>
+	   	  <li class="li1">
+	   	     <li class="li0">
+	   	        <p id="el"></p>
+	   	     </li>
+	   	  </li>
+	   </ul>
+	</li>
+</div>
+
+
+<script>
+ (function() {
+  if (!Element.prototype.closest) {
+    Element.prototype.closest = function(css) {
+      var node = this;
+
+      while (node) {
+        if (node.matches(css)) return node;
+        else node = node.parentElement;
+      }
+      return null;
+    };
+  }
+
+})();
+  var element = document.querySelector('#el');
+  alert(element.closest('li').className); //li0
+ 
+</script>
+</body>
+</html>
+<!-- ###Задача 3 Метод elem.closest(css) для поиска ближайшего родителя, удовлетворяющего селектору css, не поддерживается некоторыми браузерами, например IE11-. Создайте для него полифилл. -->
+<!-- alert(numberSpan.closest('li').className) -->

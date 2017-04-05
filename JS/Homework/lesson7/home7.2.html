@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home7.2</title>
+</head>
+<body>
+
+<script>
+var anchor = document.createElement('a');
+anchor.innerHTML = "The a teg";
+anchor.style.cssText = 'background-color:red; width:100px; left:114px; top:345px; position:fixed;'; //например
+document.body.appendChild(anchor);
+
+var elem = document.createElement('div');
+elem.innerHTML = "this is a div";
+elem.style.cssText = 'background-color:blue; height: 40px; width:100px; position: fixed;';
+document.body.appendChild(elem);
+
+function positionAt(anchor, position, elem){
+	var anchorCoords = anchor.getBoundingClientRect();
+
+	switch(position){
+
+		case 'top':
+		elem.style.top = anchorCoords.top - parseInt(elem.style.height)+'px';
+		elem.style.left = anchorCoords.left+'px';
+		break;
+
+		case 'right':
+		elem.style.left = anchorCoords.left+parseInt(anchor.style.width)+'px';
+		elem.style.top = anchorCoords.top+'px';
+		break;
+
+		case 'bottom':
+		elem.style.top = anchorCoords.bottom+'px';
+		elem.style.left = anchorCoords.left+'px';
+
+		break;
+
+	}
+
+
+}
+positionAt(anchor, "bottom", elem);
+</script>
+
+</body>
+</html>
+<!-- Создайте функцию positionAt(anchor, position, elem), которая позиционирует элемент elem, в зависимости от значения аргумента position: сверху ("top"), справа ("right") или снизу ("bottom"). Функция должна проводить позиционирование относительно элемента anchor. Для решения данной задачи Вам понадобится создать элемент anchor (тег а) и elem (тег div). -->

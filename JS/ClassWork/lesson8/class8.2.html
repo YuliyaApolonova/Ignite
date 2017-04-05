@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class8.2.</title>
+</head>
+<body>
+<input type='text' name='text' placeholder = "enter some text here...">
+<button style = 'width: 100px; height:30px; background-color: red;'> press me</button>
+<div style = "width:277px; height: 150px; background-color: pink;"></div>
+<script> 
+var btn = document.getElementsByTagName('button')[0];
+
+btn.onclick = function(){
+	var div = document.getElementsByTagName('div')[0];
+	var text = document.getElementsByName('text')[0]; 
+	div.innerHTML = text.value;
+}
+</script>
+</body>
+</html>
+<!-- ###Задача 2.
+
+Создайте страницу. Разместите на странице поле ввода, кнопку и пустой div.
+Создайте сценарий, который при нажатии на кнопку будет записывать содержимое поля ввода в пустой div. -->
+

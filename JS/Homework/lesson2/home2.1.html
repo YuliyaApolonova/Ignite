@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home2.1</title>
+</head>
+<body>
+<script>
+//Напишите функцию, которая принимает 1 параметр. 
+//При первом вызове она его запоминает, при втором - суммирует переданный параметр с параметром, переданным при предыдущем вызове.
+var counter=0;
+var res=0;
+function sum(a)
+{
+	
+return function(){
+	counter++;
+	if (counter>=1)
+	{
+		return res=res+a;
+	}
+	else return a;
+	};
+}
+
+</script>
+</body>
+</html>

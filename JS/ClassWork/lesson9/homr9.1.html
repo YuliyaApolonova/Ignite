@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>home9.1</title>
+</head>
+<body>
+<ul>
+   <li>glfghfjh</li>
+   <li>dfkghsfjhjgh</li>
+   <li>;lfghskjfhjghb</li>
+   <li>kfhvfjhvjfshlv</li>
+</ul>
+
+<script>
+   window.onload = function(){
+      document.onclick = function(e){
+            var target = e.target;
+            var rng, sel;
+            if (document.createRange) {
+               rng = document.createRange();
+               rng.selectNode(target)
+               sel = window.getSelection();
+               sel.removeAllRanges();
+               sel.addRange(rng);
+            } else {
+               var rng = document.body.createTextRange();
+               rng.moveToElementText(target);
+               rng.select();
+            }
+      }
+   }
+</script>
+</body>
+</html>

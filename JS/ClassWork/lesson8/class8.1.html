@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class8.1</title>
+	<link href="style8.1.css" rel="stylesheet"/>
+</head>
+<body>
+<div>div1</div>
+<div>div2</div>
+<div>div3</div>
+<div>div4</div>
+<div>div5</div>
+<button> this is your button</button>
+<script>
+var btn = document.getElementsByTagName('button')[0];
+var divArr = document.getElementsByTagName('div');
+var counter=0;
+function handler(){
+
+	for(var i=0; i<divArr.length; i++){
+		if (i==counter){
+			divArr[i].style.backgroundColor = "red";
+			continue;
+		}
+		divArr[i].style.backgroundColor = "green";
+	}
+	
+    return function(){counter++;
+    	if(counter==5){
+		counter=0;
+	}
+    }(); 
+}
+btn.addEventListener("click", handler);
+
+</script>
+</body>
+</html>
+
+<!-- Создайте страницу. Разместите на странице 5 элементов div и кнопку. Создайте CSS файл, определите в файле правила, которые зададут всем дивам следующее оформление – высота и ширина 100 px, float=left и зеленый цвет фона. Создайте сценарий, который будет обрабатывать нажатие по кнопке и менять цвет одного из дивов на красный. Смена цвета должна происходить циклически, при первом нажатии первый div становиться красный остальные остаются зелеными, при нажатии на второй – все div становятся зелеными, а второй красный и т.д. -->

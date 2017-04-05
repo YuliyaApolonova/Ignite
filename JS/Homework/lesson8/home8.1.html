@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home 8.1</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+   <div style =" width: 300px;">
+   <form action="#" name ="myForm" method="post">
+      <div class="form-group">
+         <label for = "login">Your login:</label> 
+         <input class = "form-control" type = "text" name = "login" placeholder = "login">
+      </div>
+      <div class="form-group">
+         <label> Password: </label>
+         <input class = "form-control" type = "password" name = "password" placeholder = 'password'>
+      </div>
+      <div class="form-group">
+         <label>Telephone: </label>
+          <input class = "form-control" type = "text" name = "telephone" placeholder = "telephone">
+      </div>
+         <input class="btn btn-primary" type = "submit" value = "Отправить">    
+   </form>
+    </div>
+<script>
+
+var form = document.forms.myForm;
+function handler(e){
+	 var elems = form.elements;
+	 if (!(/^[^0-9]+$/.test(elems.login.value))){
+	 	e.preventDefault();
+	 	elems.login.style.backgroundColor = 'red';
+	 }
+	 if(!(/^[^\$]+$/.test(elems.password.value))){
+	 	e.preventDefault();
+	 	elems.password.style.backgroundColor = 'red';
+	 }
+	 if(!(/^[0-9]+$/.test(elems.telephone.value))){
+	 	e.preventDefault();
+	 	elems.telephone.style.backgroundColor = 'red';
+	 }
+
+}
+form.addEventListener("submit", handler);
+</script>
+</body>
+</html>

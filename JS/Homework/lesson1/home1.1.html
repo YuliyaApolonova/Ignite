@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home1.1</title>
+</head>
+<body>
+<script>
+//Задача 1.
+//Создайте функцию find(arr, value), которая ищет в массиве arr значение value и возвращает его номер, если найдено, или -1, если не найдено.
+var arr = [1, 90, 789, 56, 45, 34, 678, 78, -90, -6, 5, 3, 6];
+function find(arr, value)
+{
+
+	for (var i=0; i<arr.length; i++)
+	{
+		if (arr[i]==value) {return i;}
+	}
+	return -1;
+}
+rez=find(arr, 78);
+alert(rez);
+</script>
+</body>
+</html>

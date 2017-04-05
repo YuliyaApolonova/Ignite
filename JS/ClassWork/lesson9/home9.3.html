@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>home9.3</title>
+   <style>
+      #inner{
+         width:50px;
+         height:50px;
+         background-color:red;
+         position:fixed;
+      }
+   </style>
+</head>
+<body>
+<div>
+   <label for="field1"> top:</label>
+   <input type="text" id="field1"/>
+</div>
+<div><label for="field2">left:</label>
+   <input type="text" id="field2"/>
+</div>
+
+<button id="mybutt">Move</button>
+<div id="inner"></div>
+<script>
+   window.onload = function(){
+
+      var btn = document.getElementById('mybutt');
+      var div = document.getElementById('inner');
+
+      btn.addEventListener("click", function(e){
+         var x = document.getElementById('field1').value;
+         var y = document.getElementById('field2').value;
+
+         if(x ==''||y ==''){
+            alert("Input data, please!");
+            e.preventDefault();
+         }
+         else if(!/^[0-9]+$/.test(x) || !/^[0-9]+$/.test(y)){
+            e.preventDefault();
+            alert("Wrong data!");
+         }
+         else{
+            div.style.top = x+'px';
+            div.style.left = y+'px';
+         }
+
+      })
+   }
+</script>
+</body>
+</html>
+<!--Создайте страницу с двумя полями ввода, кнопкой и элементом div с шириной и высотой 50px. -->
+<!--Создайте сценарий, который по нажатию на кнопку будет перемещать div в координаты, -->
+<!--указанные в полях ввода. В случае, если при нажатии кнопки хотя бы одно из полей ввода не заполнено,-->
+<!--пользователь должен получить предупреждение, а событие click должно быть отменено.-->

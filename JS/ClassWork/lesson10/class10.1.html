@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>class10.1</title>
+</head>
+<body>
+<div id="result"></div>
+<button id="myButt">Get image</button>
+<script>
+   window.onload = function(){
+      var output = document.getElementById('result');
+      function getImg(){
+         var boundary = String(Math.random()).slice(2);
+         var boundaryMiddle = '--' + boundary + '\r\n';
+         var boundaryLast = '--' + boundary + '--\r\n'
+
+         var body = ['\r\n'];
+         for (var key in data) {
+            // добавление поля
+            body.push('Content-Disposition: form-data; name="picture" + key + '"\r\n\r\n' + data[key] + '\r\n');
+         }
+
+         body = body.join(boundaryMiddle) + boundaryLast;
+
+
+         var xhr = new XMLHttpRequest();
+         xhr.open('POST', '/submit', true);
+
+         xhr.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
+
+         xhr.onreadystatechange = function() {
+            if (this.readyState != 4) return;
+
+            alert( this.responseText );
+         }
+
+         xhr.send(body);
+//         var xhr = new XMLHttpRequest();
+//         xhr.open("GET", 'imj.jpg', true);
+//         xhr.onreadystatechange = function () {
+//            if (xhr.readyState == 4) { // если получен ответ
+//               if (xhr.status == 200) { // и если статус код ответа 200
+//                  output.innerHTML += xhr.responseText; // responseText - текст ответа полученного с сервера.
+//               }
+//            }
+//         }
+//
+//         xhr.send();
+      }
+      setTimeout(getImg, 1000);
+   }
+</script>
+</body>
+</html>

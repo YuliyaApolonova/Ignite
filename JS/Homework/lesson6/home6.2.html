@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home6.2</title>
+</head>
+<body><div> There </div>
+<div> are </div>
+<div> elements</div>
+<script>
+
+    var elem = document.createElement('div');
+
+    elem.innerHTML = '<b> New el</b>';
+
+    function insertAfter(elem, refElem){
+    
+    	var parent = refElem.parentNode;
+    	var next = refElem.nextSibling;
+    	return parent.insertBefore(elem, next);
+
+    }
+    console.log(document.body.firstChild);
+    var body = document.body;
+    insertAfter(elem, body.firstChild);
+    insertAfter(elem, body.lastChild);
+
+</script>
+
+</body>
+</html>
+<!-- ###Задача 2
+Напишите функцию insertAfter(elem, refElem), которая добавит elem после узла refElem.

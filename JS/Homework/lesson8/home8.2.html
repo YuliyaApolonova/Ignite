@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home8.2</title>
+	<link href = "home8.2.style.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="empty"></div>
+<div id='advice-container'></div>
+<button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+<button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+<script>
+window.onload = function(){
+ 
+   var advCont = document.getElementById('advice-container');
+
+   document.addEventListener('mouseover', function(e){
+
+      var target = e.target;
+      if(!target.hasAttribute('data-Tooltip')) return;
+      var attr = target.getAttribute('data-Tooltip');
+
+      var elemCoords = target.getBoundingClientRect();
+      advCont.style.top = elemCoords.top - parseInt(getComputedStyle(advCont).height)- 2*(parseInt(getComputedStyle(advCont).borderWidth)) - parseInt(getComputedStyle(advCont).paddingTop)+'px';
+      advCont.style.left = elemCoords.left+'px';
+ 	  advCont.style.display = "block";
+ 	  advCont.innerHTML = attr;
+   });
+
+    document.addEventListener('mouseout', function(e){
+    	var target = e.target;
+    	advCont.style.display = "none";
+    });
+
+}
+</script>
+</body>
+</html>

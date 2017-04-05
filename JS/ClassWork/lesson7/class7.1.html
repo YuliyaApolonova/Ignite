@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class7.1</title>
+</head>
+<body>
+<p> paragraph</p>
+<div> div1</div>
+<div id="second"> div2</div>
+<div> div3</div>
+
+
+<script>
+   var element = document.getElementsByTagName('div')[0];
+   var element2 = document.getElementById('second');
+      function move_el(elem){
+
+        function multiMove(){
+
+   		    function f1(){
+   			   var span = document.getElementsByTagName('span')[0];
+   			   if(span!=null){
+   			       span.remove();
+   		        }
+   			    elem.insertAdjacentHTML('beforeBegin', '<span> your text hear</span>');
+   		    }
+
+   		    function f2(){
+   			   var span = document.getElementsByTagName('span')[0];
+   			   span.remove();
+ 
+   			   elem.insertAdjacentHTML('afterBegin', '<span> your text hear</span>');
+   		    }
+
+   		    function f3(){
+   			   var span = document.getElementsByTagName('span')[0];
+   			   span.remove();
+   	
+   			   elem.insertAdjacentHTML('beforeEnd', '<span> your text hear</span>');
+   		    }
+
+   		    function f4(){
+   			   var span = document.getElementsByTagName('span')[0];
+   			   span.remove();
+   			
+   			   elem.insertAdjacentHTML('afterEnd', '<span> your text hear</span>');
+   		    }
+
+   		    setTimeout(f1, 400);
+   	        setTimeout(f2, 800);
+   	        setTimeout(f3, 1200);
+   	        setTimeout(f4, 1600);
+        }
+
+   	    setInterval(multiMove, 1600);
+    }
+
+    move_el(element);
+    //move_el(element2);
+
+</script>
+</body>
+</html>
+<!-- #Class Work
+
+###Задача 1. Создайте страницу. Разместите на ней произвольное количеством элементов. Разработайте сценарий, который будет по очереди перемещать span с текстом и интервалом в 400мс:
+
+Перед элементом.
+Внутри элемента перед тектом
+Внетри элемента после текста.
+После элемента. -->

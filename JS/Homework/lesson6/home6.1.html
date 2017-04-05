@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home6.1</title>
+</head>
+<body>
+<ul>
+    <li>Животные
+      <ul>
+        <li>Млекопитающие
+          <ul>
+            <li>Коровы</li>
+            <li>Ослы</li>
+            <li>Собаки</li>
+            <li>Тигры</li>
+          </ul>
+        </li>
+        <li>Другие
+          <ul>
+            <li>Змеи</li>
+            <li>Птицы</li>
+            <li>Ящерицы</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Рыбы
+      <ul>
+        <li>Аквариумные
+          <ul>
+            <li>Гуппи</li>
+            <li>Скалярии</li>
+          </ul>
+
+        </li>
+        <li>Морские
+          <ul>
+            <li>Морская форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+  window.onload = function(){
+  	var liList = document.getElementsByTagName('li');
+  	for(var i=0; i < liList.length; i++){
+
+  		var content = liList[i].firstChild.textContent;
+
+  		var insertedLi = liList[i].getElementsByTagName('li');
+  		
+  		alert(content+'\n'+insertedLi.length +' inserted lists');
+
+  	}
+
+  }
+  </script>
+</body>
+</html>
+
+<!-- Есть дерево из тегов ul и li.
+
+Напишите код, который для каждого элемента li выведет:
+
+Текст непосредственно в нём указанный (без подразделов).
+Количество всех вложенных в него элементов li. -->

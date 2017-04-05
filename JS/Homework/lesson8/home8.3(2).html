@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home8.3</title>
+	<style>
+	label{
+		float:left;
+	}
+	div{
+		text-align:right;
+	}
+	#container{
+		width:27%;
+	}
+
+	</style>
+</head>
+<body>
+<div id="container">
+<div>
+<label for="arg1">Input the first argument:</label>
+<input type="text" name="arg1" id="arg1"/>
+</div>
+<div>
+<label for="arg2">Input the second argument:</label>
+<input type="text" name="arg2" id="arg2"/>
+</div>
+<div>
+<label for = "result">Result:</label>
+<input type="text" id="result"/>
+</div>
+<div>
+<button id="add">+</button>
+<button id="substract">-</button>
+<button id="divide" >:</button>
+<button id="mult">*</button>
+<button id="reset">Сброс</button>
+</div>
+</div>
+<script>
+window.onload = function(){
+
+  var res = document.getElementById('result');
+  var arg1 = document.getElementById('arg1');
+  var arg2 = document.getElementById('arg2');
+
+  var addButt = document.getElementById('add');
+  var substrButt = document.getElementById('substract');
+  var divButt = document.getElementById('divide');
+  var multButt = document.getElementById('mult');
+  var resButt = document.getElementById('reset');
+
+  function addition(){
+	res.value = +arg1.value+ +arg2.value;
+  }
+
+  function substraction(){
+	res.value = +arg1.value- +arg2.value;
+  }
+
+  function division(){
+	res.value = +arg1.value/ +arg2.value;
+  }
+
+  function multiplication(){
+	res.value = +arg1.value* +arg2.value;
+  }
+
+  function reset(){
+	res.value ='';
+	arg1.value = '';
+	arg2.value = '';
+
+  }
+  
+  addButt.addEventListener("click", addition);
+  substrButt.addEventListener("click", substraction);
+  divButt.addEventListener("click", division);
+  multButt.addEventListener("click", multiplication);
+  resButt.addEventListener("click", reset);
+
+}
+</script>
+
+</body>
+</html>
+<!-- Создайте страницу-калькулятор. Разместите на странице два поля ввода и кнопки для арифметических операций над данными введенными в поля ввода. Реализуйте данную страницу двумя способами – с использованием модели DOM Level 0 (через атрибуты) и DOM Level 2 -->

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home 7.1</title>
+</head>
+<body>
+<div style = "height:30px; width:100px; background-color:red; position:fixed;">div1</div>
+<div style = "height: 40px; width: 50px; background-color: green; position:fixed;">div2</div>
+<div style = "height:60px; width:110px; background-color: blue; position:fixed;">div3</div>
+<script>
+ function move(){
+ 	var div1 = document.getElementsByTagName('div')[0];
+ 	var div2 = document.getElementsByTagName('div')[1];
+ 	var div3 = document.getElementsByTagName('div')[2];
+
+ 	function selfRandom(min, max){
+       return Math.random() * (max - min) + min;
+    }
+
+ 	function f(){
+ 		div1.style.left = selfRandom(parseInt(div1.style.width), document.documentElement.clientWidth - parseInt(div1.style.width))+'px';
+ 		div1.style.top = selfRandom(parseInt(div1.style.height), document.documentElement.clientHeight - parseInt(div1.style.height))+'px';
+ 		
+
+ 		div2.style.left = selfRandom(parseInt(div2.style.width), document.documentElement.clientWidth - parseInt(div2.style.width))+'px';
+ 		div2.style.top = selfRandom(parseInt(div2.style.height), document.documentElement.clientHeight - parseInt(div2.style.height))+'px';
+ 		
+ 		div3.style.left = selfRandom(parseInt(div2.style.width), document.documentElement.clientWidth - parseInt(div3.style.width))+'px';
+ 		div3.style.top = selfRandom(parseInt(div3.style.height), document.documentElement.clientHeight - parseInt(div3.style.height))+'px';
+ 		
+
+
+ 	}
+ 	setInterval(f, 1000);
+
+
+ }
+window.onload = move();
+</script>
+</body>
+</html>
+<!-- Создайте страницу с 3 элементами div. Напишите сценарий, который будет произвольно менять положение этиъ элементов на странице каждую секунду. -->

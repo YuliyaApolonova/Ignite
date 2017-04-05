@@ -1,0 +1,53 @@
+<!--Модифицируйте код предыдущего задания так, чтобы максимальное время обработки запроса не превышало 20 секунд -->
+<!--и при первышении этого времени запрос был отменен, а пользователь видел на экране сообщение об ошибке-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>home10.1</title>
+</head>
+<body>
+<button id="myButt">View content</button>
+<div id="output"></div>
+<script>
+   window.onload = function(){
+      var btn = document.getElementById('myButt');
+      var output = document.getElementById("output");
+      btn.addEventListener('click', function(){
+         var xhr1 = new XMLHttpRequest();
+         xhr1.open('GET', "home10.1(2).html");
+         xhr1.send();
+         output.innerHTML += xhr1.responseText;
+         xhr1.onreadystatechange = function () {
+            if (xhr1.readyState == 4) {
+               if (xhr1.status == 200) {
+                  output.innerHTML += xhr1.responseText;
+               }
+            }
+         }
+         xhr1.timeout = 20000;
+         xhr1.ontimeout = function() {
+            alert( 'Извините, запрос превысил максимальное время' );
+         }
+
+         var xhr2 = new XMLHttpRequest();
+         xhr2.open('GET', "home10.1(3).html");
+         xhr2.send();
+         output.innerHTML += xhr2.responseText;
+         xhr2.onreadystatechange = function () {
+            if (xhr2.readyState == 4) {
+               if (xhr2.status == 200) {
+                  output.innerHTML += xhr2.responseText;
+               }
+            }
+         }
+         xhr2.timeout = 20000;
+         xhr2.ontimeout = function() {
+            alert( 'Извините, запрос превысил максимальное время' );
+         }
+      })
+   }
+
+</script>
+</body>
+</html>

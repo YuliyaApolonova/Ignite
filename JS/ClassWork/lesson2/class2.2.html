@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class2.2</title>
+</head>
+<body>
+<script>
+//Напишите функцию, возвращающую количество собственных вызовов.
+function callback()
+{
+	var counter=0;
+	return function()
+	{
+		return ++counter;
+	}
+}
+var count=callback();
+alert(count());
+alert(count());
+alert(count());
+</script>
+</body>
+</html>

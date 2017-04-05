@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>home10.3</title>
+</head>
+<body>
+<input type = "text" id="value1">
+<input type = "text" id="value2">
+<button id="myButt"> send</button>
+<div id="result"></div>
+<script>
+   window.onload = function(){
+      var btn = document.getElementById('myButt');
+      var output = document.getElementById('result');
+      var value1 = document.getElementById('value1').value;
+      var value2 = document.getElementById('value2').value;
+      btn.addEventListener("click", function(){
+         var xhr = new XMLHttpRequest();
+         xhr.open("POST", CalcHandler.ashx, true);
+         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+         xhr.send('a=' + value1 + '&b=' + value2);
+         xhr.onload = function() {
+            output.innerHTML += xhr.responseText + '<br/>';
+         }
+      })
+   }
+</script>
+</body>
+</html>
+<!--Разработайте страницу с двумя полями ввода и кнопкой.-->
+<!--Пользователь должен вводить в поля ввода целочисленный значения, -->
+<!--а нажатие по кнопке должно приводить к асинхронному запросу на сервер.-->
+<!--Запрашивать следует обработчик CalcHandler.ashx, который находиться вместе с задачей в папке Homework,-->
+<!--обработчик принимает два post параметра с именами ‘a’ и ‘b'. -->
+<!--Результат который возвращает обработчик выведите на страницу (рекомендуется выполнять задачу в Visual Studio).-->
