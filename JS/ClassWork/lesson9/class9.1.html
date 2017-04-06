@@ -9,47 +9,27 @@
 <p>press ctrl+s to save data</p>
 <script>
   window.onload = function(){
-     function runOnKeys(func) {
-        var codes = [].slice.call(arguments, 1);
 
-        var pressed = {}; //массив нажатых клавиш
+    document.onkeydown = interceptKeys;
 
-        document.onkeydown = function(e) {
-           e = e || window.event;
+    function interceptKeys(evt) {
+       evt = evt||window.event // IE support
+       var c = evt.keyCode;
+       var ctrlDown = evt.ctrlKey||evt.metaKey; // Mac support
 
-           pressed[e.keyCode] = true;
+       if (ctrlDown && c == 65){
+    	   alert("Data chosen!");
+    	   return false;
+        }
+       if(ctrlDown && c == 83){
+    	   alert("Data saved!");
+    	   return false;
+        }
 
-           for (var i = 0; i < codes.length; i++) { // проверить, все ли клавиши нажаты
-              if (!pressed[codes[i]]) {
-                 return;
-              }
-           }
-
-           // во время показа alert, если посетитель отпустит клавиши - не возникнет keyup
-           // при этом JavaScript "пропустит" факт отпускания клавиш, а pressed[keyCode] останется true
-           // чтобы избежать "залипания" клавиши -- обнуляем статус всех клавиш, пусть нажимает всё заново
-           pressed = {};
-
-           func();
-
-        };
-
-        document.onkeyup = function(e) {
-           e = e || window.event;
-
-           delete pressed[e.keyCode];
-        };
-
-     }
-
-     runOnKeys(
-        function() {
-           alert("Привет!")
-        },
-        "Ctrl".charCodeAt(0),
-        "S".charCodeAt(0)
-     );
-  }
+        return true;
+    }
+     
+}
 </script>
 </body>
 </html>

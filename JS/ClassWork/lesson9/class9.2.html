@@ -19,6 +19,20 @@
          left:1250px;
          background-color:lightblue;
       }
+      #nav.up{
+      	display:block;
+      }
+      #nav.down{
+      	display:block;
+      }
+      #nav.up::before{
+      	display:block;
+      	content: 'up';
+      }
+      #nav.down::before{
+      	display:block;
+      	content:'down';
+      }
    </style>
 </head>
 <body>
@@ -29,18 +43,49 @@
 <script>
    window.onload = function(){
       var btn = document.getElementById('nav');
-      window.onscroll = function(){
-         if(document.documentElement.scrollTop<=document.documentElement.clientHeight){
-            btn.style.display = 'block';
-            btn.innerHTML = 'up';
-            btn.onclick = function(){
-               window.scrollTo(0,0);
+      window.onscroll = function() {
+         var pageY = window.pageYOffset || document.documentElement.scrollTop;
+         var innerHeight = document.documentElement.clientHeight;
+
+         switch (btn.className){
+             case '':
+               if (pageY > innerHeight) {
+                 btn.className = 'up';
+                }
+                break;
+
+             case 'up':
+               if (pageY < innerHeight) {
+                 btn.className = '';
+                }
+                break;
+
+             case 'down':
+               if (pageY > innerHeight) {
+                 btn.className = 'up';
+                }
+                break;
             }
-         }
+        }
+        var pageYLabel = 0;
 
+        btn.onclick = function() {
+            var pageY = window.pageYOffset || document.documentElement.scrollTop;
 
-      }
-   }
+            switch (this.className) {
+               case 'up':
+                   pageYLabel = pageY;
+                   window.scrollTo(0, 0);
+                   this.className = 'down';
+                   break;
+
+               case 'down':
+                    window.scrollTo(0, pageYLabel);
+                    this.className = 'up';
+
+            }
+        }
+    }
 </script>
 </body>
 </html>
