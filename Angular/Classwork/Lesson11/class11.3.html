@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = 'myApp'>
+<head>
+   <meta charset="UTF-8">
+   <title>class11.3</title>
+   <script src = 'angular.js'></script>
+   <script>
+      var myApp = angular.module('myApp', []);
+      myApp.controller('mainCtrl', function($scope){
+         $scope.message = '';
+      })
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<input ng-model = "message" type = 'text' />
+<button>View</button>
+<p ng-bind="message"></p>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = 'myApp'>
+<head>
+   <meta charset="UTF-8">
+   <title>class11.2</title>
+   <script src = 'angular.js'></script>
+   <script>
+     var myApp = angular.module('myApp', []);
+      myApp.controller('mainCtrl', function($scope){
+         $scope.text = null;
+         $scope.clickHandler = function(){
+            $scope.message = $scope.text;
+         }
+      })
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<input ng-model = "text" type = 'text' />
+<button ng-click = 'clickHandler()'>View</button>
+<p>{{message}}</p>
+</body>
+</html>

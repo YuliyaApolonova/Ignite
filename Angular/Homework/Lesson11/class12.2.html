@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="tableApp">
+<head>
+   <meta charset="UTF-8">
+   <title>class12.2</title>
+   <link href="Libraries/bootstrap.css" rel="stylesheet" />
+   <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+   <script src = 'angular.js'></script>
+   <script>
+      var tableApp = angular.module('tableApp', []);
+      tableApp.controller('mainCtrl', function($scope){
+         $scope.items = [
+            { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+            { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+            { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+            { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+         $scope.display [
+            {nameDisplay: true}]
+      })
+
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<table class="table">
+   <thead>
+   <tr>
+
+   </tr>
+   <tr>
+      <th>name</th>
+      <th>price</th>
+      <th>category</th>
+      <th>count</th>
+      <th>tax</th>
+      <th>expiration</th>
+   </tr>
+   </thead>
+   <td><input type="checkbox" name='display' ng-model="display"></td>
+   <div ng-switch on="display.nameDisplay">
+         <tr ng-repeat ='item in items'>
+            <div ng-switch-when="true">
+               <td>{{item.name}}</td>
+            </div>
+
+         </tr>
+   </div>
+   <!--<td><input type="checkbox" ng-model="price-display"></td>-->
+   <!--<td><input type="checkbox" ng-model="category-display"></td>-->
+   <!--<td><input type="checkbox" ng-model="count-display"></td>-->
+   <!--<td><input type="checkbox" ng-model="tax-display"></td>-->
+   <!--<td><input type="checkbox" ng-model="expiration-display"></td>-->
+
+      <!--<td>{{item.price}}</td>-->
+      <!--<td>{{item.category}}</td>-->
+      <!--<td>{{item.count}}</td>-->
+      <!--<td>{{item.tax}}</td>-->
+      <!--<td>{{item.expiration}}</td>-->
+
+</table>
+</body>
+</html>
