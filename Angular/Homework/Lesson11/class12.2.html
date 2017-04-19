@@ -14,8 +14,7 @@
             { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
             { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
             { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
-         $scope.display [
-            {nameDisplay: true}]
+         $scope.nameDisplay = true;
       })
 
    </script>
@@ -35,13 +34,10 @@
       <th>expiration</th>
    </tr>
    </thead>
-   <td><input type="checkbox" name='display' ng-model="display"></td>
-   <div ng-switch on="display.nameDisplay">
+   <td><input type="checkbox" name='display' ng-model="nameDisplay"></td>
+   <div ng-switch on="nameDisplay">
          <tr ng-repeat ='item in items'>
-            <div ng-switch-when="true">
-               <td>{{item.name}}</td>
-            </div>
-
+               <td ng-switch-when="true">{{item.name}}</td>
          </tr>
    </div>
    <!--<td><input type="checkbox" ng-model="price-display"></td>-->
