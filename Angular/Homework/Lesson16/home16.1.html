@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>home16.1</title>
+   <script src="Task/Libraries/angular.js"></script>
+   <script src="Task/Libraries/angular_route.js"></script>
+   <link href="Task/Libraries/bootstrap.css" rel="stylesheet" />
+   <script>
+      var app = angular.module('myApp', ['ngRoute'])
+            .config(function ($routeProvider) {
+
+               $routeProvider
+                     .when('/', {
+                        templateUrl: 'Task/home.html',
+                     })
+                     .when('/contact', {
+                        templateUrl: 'Task/contact.html',
+                     })
+                     .otherwise({
+                        redirectTo: '/'
+                     })
+            })
+   </script>
+</head>
+<body>
+<div class="panel panel-primary well">
+   <ul class="nav nav-tabs">
+      <li><a href="#/home">Home</a></li>
+      <li><a href="#/contact">Contact</a></li>
+   </ul>
+</div>
+<div class="panel" ng-view></div>
+</body>
+</html>
