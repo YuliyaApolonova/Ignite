@@ -1,0 +1,54 @@
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="utf-8" />
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <title>home18.2</title>
+   <style>
+      .red {
+         color: red
+      }
+   </style>
+   <script>
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', function ($scope) {
+               $scope.itemCount = 100;
+               $scope.items = [];
+               for (var i = 0; i < $scope.itemCount; i++) {
+                  $scope.items[i] = "item " + i;
+               }
+
+            })
+            .directive('makeList', function () {
+               return {
+                  priority:1,
+                  link:   function (scope, element, attributes) {
+                     var ul = element.append(angular.element('<ul>'));
+                     for (var i = 0; i < scope.itemCount; i++) {
+                        scope.items[i] = "item " + i;
+                        ul.append(angular.element('<li>').text(scope.items[i]));
+                     }
+                  }
+               }
+            })
+            .directive("addClass", function () {
+               return {
+                  priority:2,
+                  link: function (scope, element, attributes) {
+                     var elements = element.find("li");
+                     for (var i = 0; i < elements.length; i++) {
+                        if (i % 2 == 0) {
+                           elements.eq(i).addClass("red");
+                        }
+                     }
+                  }
+               }
+            });
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+
+<div make-list add-class></div>
+
+</body>
+</html>
