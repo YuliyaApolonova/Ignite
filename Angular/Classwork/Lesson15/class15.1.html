@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>class15.1</title>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <script src="../../Libraries/angular.js"></script>
+   <script>
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', function($scope, $parse){
+               $scope.expression = '';
+               $scope.getRes = function(){
+                  $scope.result = $parse($scope.expression)();
+               }
+            })
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<label for="expression">Input your expression:</label>
+<input class='form-control' name="expression" type="text" ng-model="expression">
+<button ng-click="getRes()">getResult</button>
+<div class="container"> Result:{{result}}</div>
+
+</body>
+</html>

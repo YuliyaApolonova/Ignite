@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
+   <!--<base href="/" />-->
    <meta charset="UTF-8">
-   <title>Title</title>
+   <title>home16.2</title>
+   <script src="Task/Libraries/angular.js"></script>
+   <script src="Task/Libraries/angular_route.js"></script>
+   <link href="Task/Libraries/bootstrap.css" rel="stylesheet" />
+   <link href="Task/Libraries/bootstrap-theme.css" rel="stylesheet" />
+   <script>
+      var app = angular.module('myApp', ['ngRoute'])
+            .config(function ($routeProvider, $locationProvider) {
+
+               $routeProvider
+                     .when('/', {
+                        templateUrl: 'Task/home2.html',
+                        controller: 'home2Ctrl'
+                     })
+                     .when('/contact2', {
+                        templateUrl: 'Task/contact2.html',
+                     })
+                     .when('/contact2/:name/:age/:email/:employed', {
+                        templateUrl: 'Task/contact2.html',
+                        controller: 'contactParamCtrl'
+                     } )
+                     .otherwise({
+                        redirectTo: '/'
+                     })
+//               $locationProvider.html5Mode(true);
+            })
+            .controller('home2Ctrl', function($scope, $location){
+               var people = [{name: 'Vasya', age: 20, email: 'vasya@mail.ru', employed: false},
+                  {name: 'Masha', age: 25, email: 'm@m', employed: true},
+                  {name: 'Petya', age: 27, email: 'petya@stuff', employed: true},
+                  {name: 'John', age: 36, email: 'johnDoe@mail', employed: true},
+                  {name: 'Jane', age: 28, email: 'janeDoe@mail', employed: false}]
+               $scope.items = people;
+               $scope.setParam = function(name, age, email, employed){
+                  var params = name +'/' + age + '/' + email +'/' + employed;
+                  $location.path('/contact2/'+ params);
+               }
+            })
+            .controller('mainCtrl', function($scope, $location){
+               $scope.goHome = function () {
+                  $location.path('/');
+               }
+               $scope.goToContact = function () {
+                  $location.path('/contact2')
+               }
+            })
+            .controller('contactParamCtrl', function($scope, $routeParams){
+               $scope.name = $routeParams.name;
+               $scope.age = $routeParams.age;
+               $scope.email = $routeParams.email;
+               if ($routeParams.employed == 'true') { $scope.employed = true }
+               else { $scope.employed = false };
+            })
+   </script>
 </head>
 <body>
-
+<div class="panel panel-primary well" ng-controller="mainCtrl">
+   <input class="btn-lg btn-info" ng-click="goHome()" type="button" value="Home">
+   <input class="btn-lg btn-info" ng-click="goToContact()" type="button" value="Contact">
+</div>
+<div class="panel" ng-view></div>
 </body>
 </html>

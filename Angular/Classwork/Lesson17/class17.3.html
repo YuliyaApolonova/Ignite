@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="utf-8" />
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <title>class17.2</title>
+   <style>
+      form .ng-valid.ng-dirty {
+         background-color: lightgreen;
+      }
+      form .ng-invalid.ng-dirty {
+         background-color: lightcoral;
+      }
+   </style>
+   <script>
+
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', function ($scope) {
+               $scope.nameRegex = /^.{3,20}$/;
+               $scope.mailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]+$/;
+               $scope.loginRegex = /^[a-zA-Z_]*$/;
+               $scope.passwordRegex = /^[^\$]+$/;
+               $scope.submitHandler = function(isvalid) {
+                  if (isvalid) {
+                     alert('Form is Valid!')
+                  }
+                  else {
+                     alert('Form is invalid!');
+                  }
+               }
+            })
+
+            .directive('form', function () {
+
+               return {
+                  templateUrl: 'form.html',
+                  restrict: 'EACM',
+                  scope:false
+
+               }
+            })
+
+   </script>
+</head>
+<body>
+<div class="panel" ng-controller="mainCtrl">
+   <div form class="well"></div>
+</div>
+</body>
+</html>

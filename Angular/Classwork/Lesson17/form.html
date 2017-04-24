@@ -1,0 +1,6 @@
+<form name="myForm" ng-submit="submitHandler(myForm.$valid)">
+   <input placeholder="UserName" type="text" ng-model="myForm.name" class="input-lg form-control" ng-pattern="nameRegex" />
+   <input placeholder="Email" type="text" ng-model="myForm.email" class="input-lg form-control" ng-pattern="mailRegex" />
+   <input placeholder="Login" type="text" ng-model="myForm.login" class="input-lg form-control" ng-pattern="loginRegex" />
+   <input type="password" ng-model="myForm.pass" class="input-lg form-control" placeholder="Password" ng-pattern="passwordRegex"/>
+   <input type="submit" class="btn-info btn-lg btn" /></form>

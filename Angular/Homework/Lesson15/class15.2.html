@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>class15.2.html</title>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+   <style>
+      h1{
+         cursor: pointer;
+      }
+   </style>
+   <script src = '../../angular.js'></script>
+   <script>
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', function($scope, $anchorScroll, $location){
+               $scope.itemCount = 10;
+               $scope.items = [];
+               for (var i = 0; i < $scope.itemCount; i++) {
+                  $scope.items[i] = "item " + (i+1);
+               }
+               $location.path('');
+               $scope.show = function (id) {
+                  $location.hash(id);
+               }
+            })
+
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<button ng-click="show('item 1')"> TEXT1</button>
+<button ng-click="show('item 2')">TEXT2</button>
+<button ng-click="show('item 3')">TEXT3</button>
+<button ng-click="show('item 4')">TEXT4</button>
+<button ng-click="show('item 5')">TEXT5</button>
+<button ng-click="show('item 6')">TEXT6</button>
+<div class="container" ng-repeat="item in items" id="{{item}}">
+  <h1> {{item}}</h1>
+   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus libero nec mauris interdum,
+   sed pretium ligula feugiat. Vestibulum iaculis mi eget dui venenatis, in sollicitudin tellus convallis.
+   Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+   Aenean eget mattis erat, eu aliquet elit. Aliquam varius purus at nunc convallis interdum.
+   Mauris eros felis, consectetur non pellentesque nec, convallis quis nunc. Vestibulum sed congue ligula.
+   In eget diam id eros dapibus euismod. Sed eget est tincidunt, finibus libero nec, sollicitudin dolor.
+   Cras suscipit est molestie ex pharetra vestibulum. Etiam ultricies tempus eros, quis lacinia massa.
+</div>
+</body>
+</html>

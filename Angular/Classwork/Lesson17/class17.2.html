@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="utf-8" />
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <title>class17.2</title>
+   <script>
+
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', function ($scope) {
+            })
+
+            .directive('form', function () {
+
+               return function (scope, element) {
+
+                     var form = angular.element('<form>');
+                     element.append(form);
+                     var nameInput = angular.element('<input type="text" class="input-lg form-control" placeholder="UserName"/>');
+                     var loginInput = angular.element('<input type="text" class="input-lg form-control" placeholder="Login"/>');
+                     var passwordInput = angular.element('<input type="password" class="input-lg form-control" placeholder="Password"/>');
+                     var emailInput = angular.element('<input type="email" class="input-lg form-control" placeholder="email"/>');
+                     var submitInput = angular.element('<input type="submit" class="btn btn-primary"/>');
+                     form.append(nameInput);
+                     form.append(loginInput);
+                     form.append(passwordInput);
+                     form.append(emailInput);
+                     form.append(submitInput);
+
+
+               }
+            })
+
+   </script>
+</head>
+<body>
+<div class="panel" ng-controller="mainCtrl">
+   <div form class="well"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+   <meta charset="utf-8" />
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <title>Home17.1</title>
+   <script>
+      var app = angular.module('myApp', [])
+
+            .controller('mainCtrl', function ($scope) {
+               $scope.items = [
+                  { name: "Table", price: 44.10 },
+                  { name: "Chair", price: 21.20 },
+                  { name: "Pillow", price: 12.20 },
+                  { name: "Picture", price: 112.70 },
+                  { name: "Lamp", price: 28.31 }
+               ];
+            })
+            .directive('itemTable', function () {
+
+               return {
+                  restrict: 'E',
+                  link: function (scope, element) {
+
+                     var data = scope.items;
+                     var table = angular.element('<table class="table">');
+                     element.append(table);
+                     for (var i = 0; i < data.length; i++) {
+                        var row = angular.element('<tr>');
+                        row.append(angular.element('<td>').text(data[i].name));
+                        row.append(angular.element('<td>').text(data[i].price));
+                        table.append(row);
+                     }
+                  }
+               }
+            })
+
+
+   </script>
+</head>
+<body>
+<div class="panel" ng-controller="mainCtrl">
+      <item-table></item-table>
+</div>
+</body>
+</html>

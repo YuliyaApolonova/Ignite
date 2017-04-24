@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calcApp">
+<head>
+   <meta charset="UTF-8">
+   <title>home12.1</title>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+   <script src = '../../angular.js'></script>
+   <script>
+      var calcApp = angular.module('calcApp', []);
+      calcApp.controller('calcCtrl', function($scope){
+         $scope.addHandler = function(){
+             $scope.res = +$scope.value1+ +$scope.value2;
+         }
+         $scope.substrHandler = function(){
+            $scope.res = +$scope.value1- +$scope.value2;
+         }
+         $scope.divHandler = function(){
+            $scope.res = +$scope.value1/ (+$scope.value2);
+         }
+         $scope.multHandler = function(){
+            $scope.res = +$scope.value1* (+$scope.value2);
+         }
+
+      })
+   </script>
+</head>
+<body>
+<div ng-controller = 'calcCtrl' class="panel">
+   <input class='form-control' type="text" name="value1" ng-model="value1">
+   <input class='form-control' type="text" name="value2" ng-model="value2">
+   <button ng-click = 'addHandler()'> +</button>
+   <button ng-click = 'substrHandler()'> - </button>
+   <button ng-click = 'divHandler()'> / </button>
+   <button ng-click = 'multHandler()'> * </button>
+   <div> {{res}}</div>
+</div>
+
+
+</body>
+</html>

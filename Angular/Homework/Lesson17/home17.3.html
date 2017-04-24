@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>Home17.3</title>
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <script>
+      var app = angular.module('myApp', [])
+
+            .controller('mainCtrl', function ($scope, $anchorScroll, $location) {
+               $scope.menu = [
+                  { name: "Item1", path: 'item 1' },
+                  { name: "Item2", path: 'item 2' },
+                  { name: "Item3", path: 'item 3' },
+                  { name: "Item4", path: 'item 4' },
+                  { name: "Item5", path: 'item 5' }
+               ];
+               $scope.itemCount = 10;
+               $scope.items = [];
+               for (var i = 0; i < $scope.itemCount; i++) {
+                  $scope.items[i] = "item " + (i+1);
+               }
+               $location.path('');
+               $scope.show = function (id) {
+                  $location.hash(id);
+               }
+            })
+            .directive('menu', function () {
+
+               return {
+                  restrict: 'E',
+                  templateUrl: 'menuTemplate.html',
+                  scope: false
+               }
+            })
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<menu></menu>
+<div ng-repeat="item in items" id="{{item}}">
+   <h1> {{item}}</h1>
+   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus libero nec mauris interdum,
+   sed pretium ligula feugiat. Vestibulum iaculis mi eget dui venenatis, in sollicitudin tellus convallis.
+   Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+   Aenean eget mattis erat, eu aliquet elit. Aliquam varius purus at nunc convallis interdum.
+   Mauris eros felis, consectetur non pellentesque nec, convallis quis nunc. Vestibulum sed congue ligula.
+   In eget diam id eros dapibus euismod. Sed eget est tincidunt, finibus libero nec, sollicitudin dolor.
+   Cras suscipit est molestie ex pharetra vestibulum. Etiam ultricies tempus eros, quis lacinia massa.
+
+</div>
+
+</body>
+</html>

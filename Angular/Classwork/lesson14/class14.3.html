@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>class14.3</title>
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <script>
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', function($scope, $http){
+               $scope.downloadTable = function(){
+                  var promise = $http.get("data.json");
+                  promise.then(fulfilled, rejected)
+               }
+
+               function fulfilled(response) {
+
+                  console.log("Status: " + response.status);
+                  console.log("Type: " + response.headers("content-type"));
+                  console.log("Length: " + response.headers("content-length"));
+
+                  $scope.items = response.data;
+               }
+
+               function rejected(error) {
+                  console.error(error.status);
+                  console.error(error.statusText);
+               }
+            })
+   </script>
+</head>
+<body>
+<div class="container" ng-controller="mainCtrl">
+   <button class="btn-primary" ng-click="downloadTable()">Download</button>
+   <table>
+       <tr ng-repeat="item in items">
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+       </tr>
+   </table>
+</div>
+</body>
+</html>

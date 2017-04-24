@@ -2,21 +2,21 @@
 <html lang="en" ng-app = "toDoList">
 <head>
    <meta charset="UTF-8">
-   <title>home11.2</title>
+   <title>home11.1</title>
    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
    <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
    <script src = '../../angular.js'></script>
    <script>
       var model = { //создаем модель - массив объектов с определенными свойствами
          list:[
-            {number: 0, name: 'by milk', description: 'go to the market and by milk', date: '2/08/2015', completed: true},
-            { number: 1, name: 'watch angular video', description: 'Open the internet and watch', date: 'now', completed: false}
+            {name: 'by milk', description: 'go to the market and by milk', date: '2/08/2015', completed: true},
+            {name: 'watch angular video', description: 'Open the internet and watch', date: 'now', completed: false}
          ]
       }
 
       var toDoList = angular.module('toDoList', []);
 
-      toDoList.controller('toDoCtrl', function($scope){
+      toDoList.controller('toDoCtrl', function($scope, $http, sendJsonData){
          $scope.data = model;
          $scope.addTask = function(){
             $scope.data.list.push({
@@ -25,29 +25,32 @@
                description: $scope.description,
                completed: $scope.completed
             })
-//            $scope.newClient.id = $scope.clients.length + 1;
-//            $scope.clients.push($scope.newClient);
-//            $scope.newClient = null;
+            sendJsonData({name: $scope.name,
+               date: $scope.date,
+               description: $scope.description,
+               completed: $scope.completed});
          }
-//         $scope.showText = function (completed) {
-//            return completed ? "Да" : "Нет";
-//         }
-//
-//         $scope.setStyle = function (completed) {
-//            return completed ? "color:green" : "color:red; font-weight: bold";
-//         }
+         $scope.showText = function (completed) {
+            return completed ? "Да" : "Нет";
+         }
 
-         $scope.editTask = function(point){ // Как сделать привязку конкретно к выбранному пункту в списке тасков?
-//            var target = e.target;
-//            var id = target.parentNode.id; //get id of tr
-//            $scope.data.list.name: data.list[id].name;
-            $scope.activePoint = point;
+         $scope.setStyle = function (completed) {
+            return completed ? "color:green" : "color:red; font-weight: bold";
          }
-         $scope.saveTask = function(point) {
-            $scope.activePoint = null;
-         };
       })
-
+      toDoList.factory('sendJsonData', function($http){
+         return function(obj){
+            var config = {
+               headers: {
+                  "content-type": "application/json"
+               },
+               transformRequest: function (data, headers) {
+                  alert(JSON.stringify(data));
+               }
+            }
+            $http.put('toDoData.json', obj, config);
+         }
+      })
    </script>
 </head>
 <body ng-controller  = "toDoCtrl">
@@ -59,35 +62,23 @@
    <table class="table">
       <thead>
       <tr>
-         <th>id</th>
          <th>Name</th>
          <th>Description</th>
          <th>Date</th>
          <th>Completed</th>
       </tr>
       </thead>
-      <tbody ng-repeat="point in data.list" >
-      <tr id="{{$index}}" ng-if='point != activePoint'>
-         <td>{{$index+1}}</td>
+      <tr ng-repeat="point in data.list">
          <td>{{point.name}}</td>
          <td>{{point.description}}</td>
          <td>{{point.date}}</td>
-         <!--<td><input type="checkbox" ng-model="point.completed" /></td>-->
-         <td>{{point.completed}}</td>
-         <td><a class='btn btn-primary' href='' ng-click='editTask(point)'> Edit </a></td>
-      </tr>
-      <tr ng-if='point == activePoint'>
-         <td>{{$index+1}}</td>
-         <td><input class='form-control' ng-model='point.name' type='text' value="{{point.name}}"></td>
-         <td><input class='form-control' ng-model='point.description' type='text'></td>
-         <td><input class='form-control' ng-model='point.date' type='text'> </td>
-         <td><input class="form-control" type="checkbox" ng-model="point.completed" /></td>
+         <td><input type="checkbox" ng-model="point.completed" /></td>
          <td>
-            <a class='btn btn-primary' href='' ng-click='saveTask(point)'> Save </a>
+            <span style="{{setStyle(point.completed)}}">
+                                {{showText(point.completed)}}
+            </span>
          </td>
       </tr>
-
-      </tbody>
    </table>
 
    <div>

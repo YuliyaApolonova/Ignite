@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>class14.1</title>
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <style>
+      .btn{
+         margin-top:50px;
+         border: 3px solid greenyellow;
+      }
+   </style>
+   <script>
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', ['$scope', 'clickCounterService', function ($scope, clickCounterService) {
+
+               $scope.msg = 'clicks: ';
+               $scope.output = 'clicks: 0';
+
+               $scope.showClick = function () {
+                  $scope.output = clickCounterService($scope.msg);
+               };
+
+            }])
+            .factory('clickCounterService', function(){
+               var counter = 1;
+               return function(msg){
+                  var output = msg + counter++;
+                  return output;
+               }
+            })
+   </script>
+</head>
+<body>
+<div class="container" ng-controller="mainCtrl">
+   <button class='btn btn-default' ng-click="showClick()"> Show click</button>
+   <div>{{output}}</div>
+</div>
+</body>
+</html>

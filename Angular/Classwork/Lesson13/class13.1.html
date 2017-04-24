@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>class13.1</title>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+   <style>
+      .firstStyle{
+         width:200px;
+         height:200px;
+         background-color: red;
+      }
+      .secondStyle{
+         border-radius:50%;
+      }
+   </style>
+   <script src = '../../angular.js'></script>
+   <script>
+//      ###Задача1
+//      Создайте страницу с элементом div и кнопкой. Реализуйте следующее:
+//            При нажатии на кнопку элементу div присваиваются 2 CSS-класса
+      var myApp = angular.module('myApp', []);
+      myApp.controller('mainCtrl', function($scope){
+         $scope.styleObj = {
+            firstStyle: false,
+            secondStyle:false
+         }
+         $scope.changeClass = function(){
+            $scope.styleObj.firstStyle = true;
+            $scope.styleObj.secondStyle = true;
+         }
+      })
+   </script>
+
+</head>
+<body ng-controller="mainCtrl">
+<div ng-class="styleObj">Test</div>
+<button ng-click="changeClass()">Change</button>
+</body>
+</html>

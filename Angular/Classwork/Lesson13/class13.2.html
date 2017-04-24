@@ -2,13 +2,14 @@
 <html lang="en"  ng-app="tableApp">
 <head>
    <meta charset="UTF-8">
-   <title>class12.1</title>
-   <link href="Libraries/bootstrap.css" rel="stylesheet" />
-   <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
-   <script src = 'angular.js'></script>
+   <title>class13.2</title>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+   <script src = '../../angular.js'></script>
    <script>
       var tableApp = angular.module('tableApp', []);
       tableApp.controller('mainCtrl', function($scope){
+         $scope.sortType = 'name';
          $scope.items = [
             { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
             { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
@@ -30,14 +31,14 @@
       <th>expiration</th>
    </tr>
    </thead>
-   <tr ng-repeat ='item in items'>
+   <tr ng-repeat ='item in items |orderBy:sortType'>
       <td>{{item.name}}</td>
       <td>{{item.price}}</td>
       <td>{{item.category}}</td>
       <td>{{item.count}}</td>
-      <td>{{item.tax}}</td>
+      <td>{{item.tax | currency}}</td>
       <td>{{item.expiration}}</td>
    </tr>
 </table>
 </body>
-</html>l>
+</html>

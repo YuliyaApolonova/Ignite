@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>home13.2</title>
+   <script src='../../angular.js'></script>
+   <script>
+      var myApp = angular.module('myApp',[])
+            .controller('mainCtrl', function($scope){
+               $scope.template = '';
+               $scope.visibleTable = true;
+               $scope.items = [{name:'apple'}, {name:'bird'}, {name:'car'}, {name:'girl'}, {name:'bird'},
+                  {name:'apple'}, {name:'girl'}, {name:'girl'}, {name:'ice'}, {name:'juice'}];
+
+               $scope.setFilter = function(arg) {
+                  $scope.searchValue = arg;
+                  if($scope.template === '') {
+                     $scope.visibleTable = true;
+                  }
+                  else{
+                     $scope.visibleTable = false;
+                  }
+               }
+
+               $scope.filterFunc = function (item) {
+                  if (item.name === $scope.searchValue) {
+                     return item;
+                  }
+               }
+            })
+   </script>
+</head>
+<body ng-controller = 'mainCtrl'>
+<div ng-if="visibleTable">
+   <div ng-repeat="item in items">{{item.name}}</div>
+</div>
+<div ng-repeat="item in items |filter:filterFunc">{{item.name}}</div>
+<input type="text" ng-model="template">
+<button ng-click="setFilter(template)"> Filter</button>
+</body>
+</html>

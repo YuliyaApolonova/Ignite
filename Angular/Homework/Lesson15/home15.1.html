@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <!--Создайте страницу с двумя кнопками Start и Stop. Реализуйте следующее:-->
+
+   <!--при нажатии на кнопку start, на страницу начинают выводиться чила в возрастающем порядке с интервалом 1 с.-->
+   <!--При нажатии на кнопку stop вывод чисел останавливается.-->
+   <!--При нажатии на кнопку start отсчет начинается всегда с 0.-->
+   <meta charset="UTF-8">
+   <title>class15.1</title>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+   <script src = '../../angular.js'></script>
+   <script>
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', function($scope, $interval){
+               $scope.counter = 0;
+               $scope.items = [];
+               $scope.startTimer = function(){
+                  interval = $interval(function () {
+                     $scope.items.push($scope.counter);
+                     $scope.counter++;
+                  }, 1000);
+               }
+               $scope.stopTimer = function(){
+                  $interval.cancel(interval);
+               }
+            })
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<button class="btn btn-default" ng-click="startTimer()">Start</button>
+<button class="btn btn-default" ng-click="stopTimer()">Stop</button>
+<div ng-repeat="item in items">{{item}}</div>
+</body>
+</html>

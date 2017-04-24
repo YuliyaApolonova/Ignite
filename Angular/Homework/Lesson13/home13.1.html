@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+   <meta charset="utf-8" />
+   <script src="../../angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+
+   <title>home13.1</title>
+   <style>
+      .color {color: red;}
+      .size {font-size: 22px;}
+      .form {font-family: "Book Antiqua";}
+      .panel{margin-left:50px;}
+      .test {
+         margin: 30px;
+         width: 200px;
+         height: 200px;
+         border: 2px solid greenyellow;
+      }
+   </style>
+   <script>
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', function ($scope) {
+
+               $scope.className = 'color';
+
+               $scope.classNames = ['color', 'size', 'form'];
+
+            })
+
+   </script>
+</head>
+<body>
+<div ng-controller="mainCtrl" ng-cloak>
+
+   <div class="test" ng-class="className">
+      <p>Lorem Ipsum</p>
+   </div>
+   <label ng-repeat="item in classNames">
+      {{item}}
+      <input ng-model="$parent.className" type="radio" value="{{item}}">
+   </label>
+</div>
+</body>
+</html>

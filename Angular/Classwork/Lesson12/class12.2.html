@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tableApp">
+<head>
+   <meta charset="UTF-8">
+   <title>class12.2</title>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet"/>
+   <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet"/>
+   <script src='../../angular.js'></script>
+   <script>
+      var tableApp = angular.module('tableApp', []);
+      tableApp.controller('mainCtrl', function ($scope) {
+         $scope.items = [
+            {name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10},
+            {name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12},
+            {name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5},
+            {name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10}];
+         $scope.nameDisplay = true;
+         $scope.priceDisplay = true;
+         $scope.categoryDisplay = true;
+         $scope.countDisplay = true;
+         $scope.taxDisplay = true;
+         $scope.expirationDisplay = true;
+      })
+
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+
+<label for="nameDisp">Show Name:</label>
+<input type="checkbox" name='nameDisp' ng-model="nameDisplay">
+<label for="priceDisp">Show Price:</label>
+<input type = "checkbox" name="priceDisp" ng-model ='priceDisplay'>
+<label for="categoryDisp">Show Category:</label>
+<input type="checkbox" name="categoryDisp" ng-model="categoryDisplay">
+<label for="countDisp">Show Count</label>
+<input type="checkbox" name="countDisp" ng-model="countDisplay">
+<label for ="taxDisp">Show Tax:</label>
+<input type="checkbox" name="taxDisp" ng-model="taxDisplay">
+<label for="expirationDisp">Show Expiration</label>
+<input type="checkbox" name="expirationDisp" ng-model="expirationDisplay">
+<table class="table">
+   <thead>
+      <th ng-switch on = 'nameDisplay'>
+         <span ng-switch-when = 'true'> name </span>
+      </th>
+      <th ng-switch on = 'priceDisplay'>
+         <span ng-switch-when ='true'>price</span>
+      </th>
+      <th ng-switch on="categoryDisplay">
+         <span ng-switch-when="true">category</span>
+      </th>
+      <th ng-switch on = 'countDisplay'>
+         <span ng-switch-when="true"> count</span>
+      </th>
+      <th ng-switch on="taxDisplay">
+         <span ng-switch-when="true">tax</span>
+      </th>
+      <th ng-switch on="expirationDisplay">
+         <span ng-switch-when="true" >expiration</span>
+      </th>
+   </thead>
+   <tbody>
+      <tr ng-repeat="item in items">
+         <td ng-switch on = 'nameDisplay'>
+            <span ng-switch-when = 'true'>
+                 {{item.name}}
+            </span>
+         </td>
+         <td ng-switch on="priceDisplay">
+            <span ng-switch-when='true'>
+               {{item.price}}
+            </span>
+         </td>
+         <td ng-switch on="categoryDisplay">
+            <span ng-switch-when='true'>
+               {{item.category}}
+            </span>
+         </td>
+         <td ng-switch on="countDisplay">
+            <span ng-switch-when='true'>
+               {{item.count}}
+            </span>
+         </td>
+         <td ng-switch on="taxDisplay">
+            <span ng-switch-when='true'>
+               {{item.tax}}
+            </span>
+         </td>
+         <td ng-switch on="expirationDisplay">
+            <span ng-switch-when='true'>
+               {{item.expiration}}
+            </span>
+         </td>
+      </tr>
+   </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>home14.1</title>
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <script>
+      var app = angular.module('myApp', [])
+            .controller('mainCtrl', ['$scope', 'mathService', function ($scope, mathService) {
+
+               $scope.value1 = '';
+               $scope.value2 = '';
+               $scope.result = '';
+
+               $scope.add = function () {
+                  $scope.result = mathService($scope.value1, $scope.value2, '+');
+               };
+               $scope.substr = function(){
+                  $scope.result = mathService($scope.value1, $scope.value2, '-');
+               }
+               $scope.div = function(){
+                  $scope.result = mathService($scope.value1, $scope.value2, '/');
+               }
+               $scope.mult = function(){
+                  $scope.result = mathService($scope.value1, $scope.value2, '*');
+               }
+
+            }])
+            .factory('mathService', function(){
+               return function(value1, value2, operation){
+                  var output;
+                  switch(operation){
+                     case '+':
+                        output = +value1+ +value2;
+                        break;
+                     case '-':
+                        output = value1-value2;
+                        break;
+                     case '/':
+                        output = value1/value2;
+                        break;
+                     case '*':
+                        output = value1*value2;
+                        break;
+                  }
+                  return output;
+               }
+            })
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<input type="text" class="form-control" ng-model="value1">
+<input type="text" class="form-control" ng-model="value2">
+<button class="btn btn-default" ng-click="add()">+</button>
+<button class="btn btn-default" ng-click="substr()">-</button>
+<button class="btn btn-default" ng-click='div()'>/</button>
+<button class="btn btn-default" ng-click="mult()">*</button>
+<div class="container">Result:{{result}}</div>
+</body>
+</html>

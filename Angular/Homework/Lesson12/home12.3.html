@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='testApp'>
+<head>
+   <meta charset="UTF-8">
+   <title>home12.3</title>
+   <script src = '../../angular.js'></script>
+   <script>
+      var testApp = angular.module('testApp', []);
+      testApp.controller('mainCtrl', function($scope){
+         $scope.question='1';
+         $scope.variant1 = '';
+         $scope.variant2 = '';
+         $scope.variant3 = '';
+         $scope.variant4 = '';
+         $scope.variant5 = '';
+         $scope.getResult = function(){
+            $scope.mark = 0;
+              if ($scope.variant1 === '12'){
+                 $scope.mark = $scope.mark+1;
+              }
+              if($scope.variant2 === 'Tangled'){
+                 $scope.mark = $scope.mark+1;
+              }
+              if($scope.variant3 === 'Hobbit'){
+                 $scope.mark = $scope.mark+1;
+              }
+              if($scope.variant4 === 'Carroll'){
+                 $scope.mark = $scope.mark+1;
+              }
+              if($scope.variant5 === 'Angular'){
+                 $scope.mark = $scope.mark+1;
+              }
+            $scope.result = $scope.mark;
+         }
+      })
+//            Реализуйте SPA приложение, в котором пользователю представляется пройти тест из 5 вопросов,
+//            в каждом вопросе по 4 варианта ответа.
+//            Вопросы должны выбираться с помощью radio-button и когда выбран, например, вопрос №1,
+//            то на странице должны появится варианты ответа только для этого вопроса.
+//            В конце тестирования отобразите результат теста. При решении данной задачи используйте директиву ng-switch
+   </script>
+</head>
+<body ng-controller="mainCtrl">
+<input type="radio" name='question' value='1' ng-model='question'>
+<input type="radio" name='question' value='2' ng-model='question'>
+<input type="radio" name='question' value='3' ng-model='question'>
+<input type="radio" name='question' value='4' ng-model='question'>
+<input type="radio" name='question' value='5' ng-model='question'>
+<div ng-switch on="question">
+   <div ng-switch-when="1">
+      <p>How many months in year?</p>
+      <p><input type="radio" name="quest1" value='3' ng-model='$parent.variant1'>3</p>
+      <p><input type="radio" name="quest1" value="4" ng-model='$parent.variant1'>4</p>
+      <p><input type="radio"  name="quest1" value="5" ng-model='$parent.variant1'>5</p>
+      <p><input type="radio" name="quest1" value='12' ng-model='$parent.variant1'>12</p>
+   </div>
+   <div ng-switch-when="2">
+      <p>What is the name of Disney princess who had long hair?</p>
+      <p><input type="radio" name="quest2" value='Cinderella' ng-model="$parent.variant2">Cinderella</p>
+      <p><input type="radio" name="quest2" value="Thumbelina" ng-model="$parent.variant2">Thumbelina</p>
+      <p><input type="radio" name="quest2" value="Tangled" ng-model="$parent.variant2">Tangled</p>
+      <p><input type="radio" name="quest2" value="SnowWhite" ng-model="$parent.variant2">SnowWhite</p>
+   </div>
+   <div ng-switch-when="3">
+      <p>What book was written firstly?</p>
+      <p><input type="radio" name="quest3" value='ReturnOfTheKing' ng-model="$parent.variant3">Return of the king</p>
+      <p><input type="radio" name="quest3" value="Hobbit" ng-model="$parent.variant3">Hobbit</p>
+      <p><input type="radio" name="quest3" value="TwoTowers" ng-model="$parent.variant3">Two towers</p>
+      <p><input type="radio" name="quest3" value="Fellowship" ng-model="$parent.variant3">Fellowship of the ring</p>
+   </div>
+   <div ng-switch-when="4">
+      <p>Who wrote "Alice in Wonderland"?</p>
+      <p><input type="radio" name="quest4" value='Carroll' ng-model="$parent.variant4">Lewis Carroll</p>
+      <p><input type="radio" name="quest4" value="Dickens" ng-model="$parent.variant4">Charles Dickens</p>
+      <p><input type="radio" name="quest4" value="Chukovsky" ng-model="$parent.variant4">Kornei Chukovsky</p>
+      <p><input type="radio" name="quest4" value="Heinlein" ng-model="$parent.variant4">Robert Heinlein</p>
+   </div>
+   <div ng-switch-when="5">
+      <p>The best js framework is:</p>
+      <p><input type="radio" name="quest5" value='Backbone' ng-model="$parent.variant5">Backbone.js</p>
+      <p><input type="radio" name="quest5" value="React" ng-model="$parent.variant5">React.JS</p>
+      <p><input type="radio" name="quest5" value="Angular" ng-model="$parent.variant5">Angular.js</p>
+      <p><input type="radio" name="quest5" value="Ember" ng-model="$parent.variant5">Ember</p>
+   </div>
+</div>
+<button ng-click="getResult()">Save</button>
+<div> Your mark is: {{result}}</div>
+</body>
+</html>

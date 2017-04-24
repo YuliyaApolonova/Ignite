@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+   <meta charset="UTF-8">
+   <title>class18.3</title>
+   <script src="../../Libraries/angular.js"></script>
+   <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+   <script>
+      var app = angular.module('myApp', [])
+            .directive('customDirective', function () {
+               return {
+                  restrict: 'A',
+
+                  transclude: true,
+
+                  template: '<button class="btn btn-default" ng-transclude></div>'
+               }
+            })
+   </script>
+</head>
+<body>
+<div custom-directive>’myButton’</div>
+</body>
+</html>
