@@ -15,7 +15,13 @@ var App = React.createClass ({
             {first_name:"Michael",last_name:"King",email:"mking7@w3.org",gender:"Male",ip_address:"149.114.62.6", id: 34239}]
       }
    },
+   getInitialState: function() {
+      return {
+         loaded: true
+      }
+   },
    addNew: function(){
+      this.setState({loaded: true});
       var form = document.forms.userForm;
       var elems = form.elements;
       var newUser = {};
@@ -24,12 +30,12 @@ var App = React.createClass ({
       newUser.gender = elems.gender.value;
       newUser.id = elems.id.value;
       this.props.users.push(newUser);
-      for(var i=0; i<this.props.users.length; i++){ //newUser добавляется успешно
+      for(var i=0; i<this.props.users.length; i++){ //newUser успеешно добавлен
          console.log(this.props.users[i]);
       }
    },
    render() {
-
+   if(this.state.loaded == true){
          return(
                <div>
                   <table className="table">
@@ -42,19 +48,25 @@ var App = React.createClass ({
                      </thead>
                      <tbody>
                      {this.props.users.map(function(user, index) {
-                        return <TableItem key={user.id} name={user.first_name} lastName={user.last_name} gender={user.gender}>1</TableItem>
+                        return <TableItem key={user.id} name={user.first_name} lastName={user.last_name}
+                                          gender={user.gender}>1</TableItem>
                      })}
                      </tbody>
                   </table>
                   <form name="userForm">
-                     <input type="text" name="name"/>
-                     <input type="text" name="lastName"/>
-                     <input type="gender" name="gender"/>
-                     <input type="id" name="id"/>
+                     <label >name:</label>
+                     <input className='form-control' type="text" name="name"/>
+                     <label>lastName: </label>
+                     <input className='form-control' type="text" name="lastName"/>
+                     <label> gender: </label>
+                     <input className='form-control' type="gender" name="gender"/>
+                     <label>id:</label>
+                     <input className='form-control' type="id" name="id"/>
                   </form>
-                  <button onClick={this.addNew}> Add new </button>
+                  <button className='btn btn-primary' onClick={this.addNew}> Add new </button>
                </div>
          )
+       }
    }
 })
 

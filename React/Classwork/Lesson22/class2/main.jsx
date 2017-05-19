@@ -1,10 +1,9 @@
 
-function getImage() {
+function getImage(url) {
 
    return new Promise(function (resolve, reject) {
 
       let xhr = new XMLHttpRequest();
-      url = '/image.jpg';
       xhr.open("GET", url);
       xhr.responseType = "blob";
 
@@ -25,7 +24,9 @@ function getImage() {
 };
 getImage('image.jpg')
       .then((img) => {
-               document.getElementById('example');
+               var example = document.getElementById('example');
+               example.appendChild(img);
+               console.log("img", img);
             },
             (err) => {
                console.log(err);

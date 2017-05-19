@@ -22,6 +22,7 @@ module.exports = {
       "Homework/Lesson21/home2/bundle": "./Homework/Lesson21/home2/main.jsx",
       "Homework/Lesson21/home3/bundle": "./Homework/Lesson21/home3/main.jsx",
       "Classwork/Lesson22/class1/bundle": "./Classwork/Lesson22/class1/main.jsx",
+      "Classwork/Lesson22/class2/bundle": "./Classwork/Lesson22/class2/main.jsx",
       "Classwork/Lesson22/class3/bundle": "./Classwork/Lesson22/class3/main.jsx",
       "Homework/Lesson22/home1/bundle": "./Homework/Lesson22/home1/main.jsx",
       "Homework/Lesson22/home2/bundle": "./Homework/Lesson22/home2/main.jsx",
@@ -34,6 +35,15 @@ module.exports = {
       "Classwork/Lesson24/class3/bundle": "./Classwork/Lesson24/class3/index.jsx",
       "Homework/Lesson24/home1/bundle": "./Homework/Lesson24/home1/main.jsx",
       "Homework/Lesson24/home2/bundle": "./Homework/Lesson24/home2/main.jsx",
+      "Classwork/Lesson25/class1/bundle": "./Classwork/Lesson25/class1/main.jsx",
+      "Classwork/Lesson25/class2/bundle": "./Classwork/Lesson25/class2/main.jsx",
+      "Classwork/Lesson25/class3/bundle": "./Classwork/Lesson25/class3/main.jsx",
+      "Homework/Lesson25/home1/bundle": "./Homework/Lesson25/home1/main.jsx",
+      "Homework/Lesson25/home2/bundle": "./Homework/Lesson25/home2/main.jsx",
+      "Classwork/Lesson26/class1/bundle": "./Classwork/Lesson26/class1/main.jsx",
+      "Classwork/Lesson26/class2/bundle": "./Classwork/Lesson26/class2/main.jsx",
+      "Classwork/Lesson26/class3/bundle": "./Classwork/Lesson26/class3/main.jsx",
+
    } ,
    output: {
       filename: '[name].js'
