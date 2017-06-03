@@ -43,6 +43,9 @@ module.exports = {
       "Classwork/Lesson26/class1/bundle": "./Classwork/Lesson26/class1/main.jsx",
       "Classwork/Lesson26/class2/bundle": "./Classwork/Lesson26/class2/main.jsx",
       "Classwork/Lesson26/class3/bundle": "./Classwork/Lesson26/class3/main.jsx",
+      "Homework/Lesson26/home1/bundle": "./Homework/Lesson26/home1/main.jsx",
+      "Homework/Lesson26/home2/bundle": "./Homework/Lesson26/home2/main.jsx",
+      "Homework/Lesson26/home3/bundle": "./Homework/Lesson26/home3/main.jsx"
 
    } ,
    output: {
